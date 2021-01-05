@@ -1,0 +1,58 @@
+.connectionWrap {
+    width: 100%;
+    min-height: 6em;
+    line-height: 6em; 
+    display: table;
+}
+
+.favs {
+    padding: 1%
+}
+
+.connectionWrap:nth-child(even){
+    background: lightgrey;
+}
+
+.connectionWrap:nth-child(even){
+    background: lightgrey;
+    border-radius: 3px;
+}
+
+.connectionWrap:hover{
+    -webkit-box-shadow:inset 0px 0px 0px 2px rgb(17, 59, 87);
+    -moz-box-shadow:inset 0px 0px 0px 2px rgb(17, 59, 87);
+    box-shadow:inset 0px 0px 0px 2px rgb(17, 59, 87);
+    border-radius: 3px;
+}
+
+.connectionWrap:active{
+    -webkit-box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+    -moz-box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+    box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+}
+
+.connectionWrap:active:hover{
+    -webkit-box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+    -moz-box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+    box-shadow:inset 0px 0px 0px 3px rgb(17, 59, 87);
+}
+
+.connectionColumn {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.connectionColumn > div {
+    line-height: 30px;
+}
+
+.deletebutton{
+    z-index: 1;
+    float: right;
+}
+
+.timepicker{
+    display: flex; 
+    float: left;
+}

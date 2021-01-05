@@ -1,0 +1,31 @@
+<div *ngIf="favourites"> Favourite rides</div>
+<div class="connectionList column favs">
+
+    <div class="connectionWrap" *ngFor="let favourite of favourites;"
+        (click)="sendConnections(favourite.from,favourite.to,favourite.id)">
+
+        <div class="connectionColumn">
+            <div>{{favourite.from}} - {{favourite.to}}</div>
+        </div>
+
+        <div class="connectionColumn">
+            <button class="deletebutton" mat-button matSuffix mat-icon-button aria-label="Clear"
+                (click)="$event.stopPropagation(); deleteFav(favourite.id)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="timepicker">
+        <input matInput type="time" #time>
+    </div>
+
+    <button mat-icon-button (click)="test2(time.value)">
+        <mat-icon>sync</mat-icon>
+    </button>
+</div>
+<div>
+    <button (click)="getCachedConnections()">
+
+    </button>
+</div>

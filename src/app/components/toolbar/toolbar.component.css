@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  background-color: white;
+}
+
+.toolbar{
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  height: 6vh;
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+
+  background: rgb(17, 59, 87);
+}
+
+.example-sidenav {
+  min-width: 30%;
+  max-width: 50%;
+} 
+
+@media only screen and (max-width: 500px) {
+  .example-sidenav {
+    min-width: 75%;
+    max-width: 75%;
+  } 
+}

@@ -1,0 +1,76 @@
+<div class="container">
+    <p *ngIf="errorMessage">
+        {{ errorMessage }}
+    </p>
+    <div class="searchcontainer">
+        <div class="flexitem">
+            <form class="example-form">
+                <mat-form-field class="example-full-width inputcss">
+                    <input type="text" placeholder="From" aria-label="Number" matInput [formControl]="myFromControl"
+                        [matAutocomplete]="autoFrom" #from>
+
+                    <mat-autocomplete autoActiveFirstOption #autoFrom="matAutocomplete">
+                        <mat-option *ngFor="let station of filteredFromStationNames | async" [value]="station">
+                            {{station}}
+                        </mat-option>
+                    </mat-autocomplete>
+
+                    <button *ngIf="from.value" mat-button matSuffix mat-icon-button aria-label="Clear"
+                        (click)="from.value=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+
+            <button (click)='temp=from.value; from.value = to.value; to.value = temp; 
+                                        search(from.value, to.value, datetime.value)' mat-icon-button
+                class="material-icon swap_horiz-icon buttoncss">
+                <mat-icon>swap_horiz</mat-icon>
+            </button>
+        </div>
+
+        <div class="flexitem">
+            <form class="example-form">
+                <mat-form-field class="example-full-width inputcss">
+                    <input type="text" placeholder="To" aria-label="Number" matInput [formControl]="myToControl"
+                        [matAutocomplete]="autoTo" #to>
+                    <mat-autocomplete autoActiveFirstOption #autoTo="matAutocomplete">
+                        <mat-option *ngFor="let station of filteredToStationNames | async" [value]="station">
+                            {{station}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <button mat-button *ngIf="to.value" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="to.value=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
+
+            <button (click)="search(from.value, to.value, datetime.value)" mat-icon-button
+                class="example-icon material-icon search-icon buttoncss">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+
+        <div class="flexitem">
+            <mat-form-field class="inputcss">
+                <input matInput type="datetime-local" placeholder="" #datetime>
+            </mat-form-field>
+
+            <button (click)="addFavourite(from.value, to.value)" mat-icon-button
+                class="example-icon material-icon search-icon buttoncss">
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+
+            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="addFavourite(from.value, to.value)">
+                <mat-icon>favorite</mat-icon>
+            </button> -->
+
+            <!-- <button (click)="addFavourite(from.value, to.value)" mat-icon-button
+                class="example-icon favorite-icon buttoncss">
+                <mat-icon>playlist_add</mat-icon>
+            </button> -->
+        </div>
+    </div>
+    <app-show-connections [stationConnection]="stationConnection"></app-show-connections>
+</div>

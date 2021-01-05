@@ -1,0 +1,100 @@
+<!-- https://material.angular.io/components/dialog/overview -->
+<div *ngIf="details" class="detailsbox">
+    <div class="header">
+        <div class="row1">
+            <span class="depTime"></span>
+            <span class="strong">{{ details.departure.station }}&nbsp;&nbsp;</span>
+            <span class="strong">
+                <mat-icon class="grey icon-font-size">double_arrow</mat-icon>
+            </span>
+            <span class=" strong">&nbsp;{{ details.arrival.station }}</span>
+            <span class="depTime"></span>
+            <mat-icon class=" grey icon-font-size">timelapse</mat-icon>
+            <span class=""> {{ details.duration * 1000 | date:'HH:mm':'UTC' }} </span>
+            <span class="depTime"></span>
+            <div *ngIf="details.vias">
+                <span>hops:&nbsp;</span>
+                <span class=" strong">{{details.vias ? details.vias.number : 0}}</span>
+            </div>
+        </div>
+        <div *ngIf="details.departure.delay !== '0'" class="row1">
+            <span class="depTime"></span>
+            <div class="delay">
+                <mat-icon class="delay-icon">
+                    more_time
+                </mat-icon>
+                <span>{{ details.departure.delay * 1000 | date:'HH:mm':'UTC' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row1">
+        <span class="depTime strong">{{ details.departure.time * 1000 | date:'HH:mm'}}</span>
+        <span class="station strong">{{ details.departure.station }}</span>
+        <span class="platform">{{ details.departure.platform }}</span>
+    </div>
+
+    <div class="row1 grey">
+        <span class="depTime"></span>
+        <span class="depTime"></span>
+        <mat-icon class="icon-font-size">train</mat-icon>
+        <span> {{details.departure.vehicleinfo.shortname}} </span>
+        <mat-icon class="grey icon-font-size">double_arrow</mat-icon>
+        <span>{{ details.departure.direction.name }}&nbsp;&nbsp;</span>
+
+    </div>
+
+    <!-- Show hops -->
+    <div *ngIf="hops">
+        <div *ngFor="let hop of hops;" class="hop">
+            <div class="row1 ">
+                <span class="depTime">{{ hop.arrival.time * 1000 | date:'HH:mm' }}</span>
+                <span class="station strong">{{ hop.station }}</span>
+                <span class="platform">{{ hop.arrival.platform }}</span>
+            </div>
+            <div class="">
+                <hr class="hr-style">
+                <div class="row1 lightgrey">
+
+                    <span class="depTime"> </span>
+                    <span class="depTime"> </span>
+                    <mat-icon class="icon-font-size">access_time</mat-icon>
+                    <span class="grey">{{hop.timeBetween * 1000 | date:'HH:mm':'UTC'}}</span>
+                    <span class="grey">&nbsp;{{ hop.station }}</span>
+                </div>
+                <div class="row1 lightgrey">
+                    <span class="depTime"> </span>
+                    <span class="depTime"> </span>
+                    <span>Platform&nbsp;</span>
+                    <span class=" grey">{{ hop.arrival.platform }}&nbsp;&nbsp;&nbsp;</span>
+                    <mat-icon class="grey icon-font-size">transfer_within_a_station</mat-icon>
+                    <span>&nbsp;Platform&nbsp;</span>
+                    <span class="grey">{{ hop.departure.platform }}</span>
+                </div>
+            </div>
+            <hr class="hr-style">
+
+            <div class="row1 ">
+                <span class="depTime">{{ hop.departure.time * 1000 | date:'HH:mm' }}</span>
+                <span class="station strong">{{ hop.station }}</span>
+                <span class="platform">{{ hop.departure.platform }}</span>
+            </div>
+            <div class="row1 grey">
+                <span class="depTime"></span>
+                <span class="depTime"></span>
+                <mat-icon class="icon-font-size">train</mat-icon>
+                <span> {{hop.departure.vehicleinfo.shortname}} </span>
+                <mat-icon class="grey icon-font-size">double_arrow</mat-icon>
+                <span>{{ hop.departure.direction.name }}&nbsp;&nbsp;</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="arrivalstation row1">
+        <span class="depTime strong">{{ details.arrival.time * 1000 | date:'HH:mm' }}</span>
+        <span class="station strong">{{ details.arrival.station }}</span>
+        <span class="platform">{{ details.arrival.platform }}</span>
+
+    </div>
+</div>

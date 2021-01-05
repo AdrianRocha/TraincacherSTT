@@ -1,0 +1,43 @@
+mat-slider {
+  width: 300px;
+}
+
+.distance {
+  display: inline-block;
+  padding-right: 5%;
+  background: rgb(17, 59, 87);
+  /* background: #3F51B5; */
+  border-radius: 30px;
+  color: #fff;
+  text-align: center;
+  padding: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  
+  /* line-height: 15px;
+  min-width: 20px; */
+
+  min-width: 1.3em;
+  /* max-width: 1.3em; */
+  min-height: 1.3em;
+  max-height: 1.3em;
+
+  line-height: 1.3em;
+}
+
+.title{
+  margin-bottom: 10%;
+}
+
+.show-map{
+  height:100%;
+}
+
+::ng-deep .mat-flat-button{
+  height:2.5em !important;
+  width:48px !important;
+  font-size:1em !important;
+  padding: 0;
+  background-color: rgb(17, 59, 87) !important;
+  margin-bottom: 2%;
+}

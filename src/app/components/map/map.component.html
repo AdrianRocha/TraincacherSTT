@@ -1,0 +1,41 @@
+<div *ngIf="userPosition" class="show-map">
+
+    <google-map height="100%" width="100%" [options]="options" [zoom]="zoom">
+
+        <map-marker [position]="userPosition" [options]="userMarker" (click)="testClick">
+        </map-marker>
+
+        <map-marker *ngFor="let marker of markerNamePositions" #markerstuff="mapMarker" [position]="marker.position"
+            [title]="marker.title" (mapClick)="openInfoWindow(markerstuff, marker.position, marker.title)">
+            <map-info-window>
+
+                <div class="title">
+                    {{ stationNameDialog }}
+                    <span class="distance">{{ stationDistanceDialog }}</span>
+                </div>
+
+                <div>
+                    <button mat-flat-button color="primary" class="" (click)="fromStation()"> From
+                    </button>
+                    <div>{{ tempFrom }}</div>
+                </div>
+
+                <div>
+                    <button mat-flat-button color="primary" class="" (click)="toStation()"> To
+                    </button>
+                    <div>{{ tempTo }}</div>
+                </div>
+
+                <button (click)='closeMap()' mat-icon-button class="material-icon swap_horiz-icon">
+                    <mat-icon>search</mat-icon>
+                </button>
+
+                <button mat-icon-button (click)='temp=tempFrom; tempFrom = tempTo; tempTo = temp;'
+                    class="material-icon swap_horiz-icon">
+                    <mat-icon>swap_horiz</mat-icon>
+                </button>
+            </map-info-window>
+
+        </map-marker>
+    </google-map>
+</div>
